@@ -6,6 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
 
 .container {
   display: flex;
@@ -25,4 +31,21 @@ body {
 .btn-new-note:hover {
   cursor: pointer;
   background-color: rgba(170, 170, 150, 0.7);
+}
+.Notes-container {
+  display: flex;
+  gap: 8px;
+}
+.Note-card {
+  max-width: 350px;
+
+  border: 1px solid rgba(170, 170, 150, 0.7);
+}
+.Note-card-title {
+  padding: 8px 16px;
+
+  background-color: rgba(170, 170, 150, 0.7);
+}
+.Note-card-content {
+  padding: 8px;
 }
