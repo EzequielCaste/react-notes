@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {Modal} from './components/Modal';
 import NoteCard from './components/NoteCard';
 
-export const NotesApp = () => {
+export const NotesApp = ({notes}) => {
+  console.log(notes);
   const [modal, setModal] = useState(false);
   const [action, setAction] = useState('new');
   const toggleModal = () => {
@@ -14,11 +15,11 @@ export const NotesApp = () => {
     toggleModal();
   };
 
-  const notes = [
-    {title: 'note 1', id: 1, content: 'note 1'},
-    {title: 'note 2', id: 2, content: 'note 2'},
-    {title: 'note 3', id: 3, content: 'note 3'},
-  ];
+  // const notes = [
+  //   {title: 'note 1', id: 1, content: 'note 1'},
+  //   {title: 'note 2', id: 2, content: 'note 2'},
+  //   {title: 'note 3', id: 3, content: 'note 3'},
+  // ];
 
   const notesComponent = notes.map((note) => (
     <NoteCard

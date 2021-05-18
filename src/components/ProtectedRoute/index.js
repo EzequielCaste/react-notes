@@ -6,7 +6,11 @@ const ProtectedRoute = (props) => {
   const Component = props.component;
   const {state} = useContext(AuthContext);
 
-  return state.isLoggedIn ? <Component /> : <Redirect to="/login" />;
+  return state.isLoggedIn ? (
+    <Component notes={state.notes} />
+  ) : (
+    <Redirect to="/login" />
+  );
 };
 
 export default ProtectedRoute;

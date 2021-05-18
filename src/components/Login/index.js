@@ -12,6 +12,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     actions.handleLogin(username, password);
+    reset();
   };
   return (
     <div>
