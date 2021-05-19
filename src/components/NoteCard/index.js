@@ -16,14 +16,21 @@ const NoteCard = ({note}) => {
   };
   return (
     <div className="Note-card">
-      <h3 className="Note-card-title">
+      <div className="Note-card-title">
         {note.title}
-        <i onClick={editNote} className="Note-card-title-btn far fa-edit"></i>
-        <i
-          onClick={deleteNote}
-          className="Note-card-title-btn far fa-trash-alt"
-        ></i>
-      </h3>
+        <div className="Note-card-buttons">
+          <i
+            title="Editar"
+            onClick={editNote}
+            className="Note-card-title-btn far fa-edit"
+          ></i>
+          <i
+            title="Borrar"
+            onClick={deleteNote}
+            className="Note-card-title-btn far fa-trash-alt"
+          ></i>
+        </div>
+      </div>
       <p className="Note-card-content">{note.content}</p>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {Link} from 'wouter';
 import {Modal} from './components/Modal';
 import NoteCard from './components/NoteCard';
 import {AppContext} from './context/appContext';
@@ -22,7 +23,7 @@ export const NotesApp = () => {
         <h1>NotesApp</h1>
         <span>
           <strong>{state.currentUser} </strong>
-          Logout
+          <button onClick={actions.handleLogout}>Logout</button>
         </span>
       </header>
       <div className="Notes-container">{notesComponent}</div>

@@ -15,29 +15,33 @@ const Login = () => {
     reset();
   };
   return (
-    <div>
-      <h1>Login</h1>
-      <form action="#" onSubmit={handleSubmit} className="Login-form">
-        <div>
-          <label>Username: </label>
-          <input
-            name="username"
-            type="text"
-            value={username}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Password: </label>
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button>Send</button>
-      </form>
+    <div className="Login-container">
+      <div className="Login-form">
+        <h1>Login</h1>
+        <form action="#" onSubmit={handleSubmit} className="">
+          <div>
+            <label>Username: </label>
+            <input
+              autoComplete="off"
+              name="username"
+              type="text"
+              value={username}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Password: </label>
+            <input
+              autoComplete="off"
+              name="password"
+              type="password"
+              value={password}
+              onChange={handleInputChange}
+            />
+          </div>
+          <button>Sign in</button>
+        </form>
+      </div>
     </div>
   );
 };

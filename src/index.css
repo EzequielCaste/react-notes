@@ -5,9 +5,8 @@
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,7 +16,45 @@ h3 {
   margin: 0;
   padding: 0;
 }
-
+.Login-container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(170, 170, 150, 0.7);
+}
+.Login-form {
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.23);
+  padding: 32px 24px;
+  background-color: #fff;
+}
+.Login-form div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+.Login-form input {
+  padding: 4px;
+  margin-left: 16px;
+  display: inline-block;
+  outline: none;
+  border: 1px solid;
+  max-width: 80px;
+  background-color: rgba(170, 170, 150, 0.7);
+}
+.Login-form button {
+  margin-top: 16px;
+  width: 100%;
+  padding: 6px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(170, 170, 150, 0.7);
+}
 .NotesApp-container {
   display: flex;
   flex-direction: column;
@@ -52,22 +89,30 @@ h3 {
 }
 .Note-card {
   border-radius: 4px;
-  max-width: 350px;
+  min-width: 150px;
   border: thin solid rgba(170, 170, 150, 0.7);
 }
 .Note-card-title {
+  font-size: 20px;
+  font-weight: 700;
   padding: 8px 16px;
   background-color: rgba(170, 170, 150, 0.7);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+.Note-card-buttons i:first-child {
+  color: blue;
+}
+.Note-card-buttons i:nth-child(2) {
+  color: darkred;
+}
 .Note-card-content {
   padding: 8px;
 }
 .Note-card-title-btn {
-  font-size: 12px;
-  margin-left: 4px;
+  font-size: 16px;
+  margin-left: 6px;
   cursor: pointer;
 }
 .Modal {

@@ -124,7 +124,7 @@ export function AppProvider(props) {
         .then((resp) => resp.json())
         .then((data) => {
           if (data.ok) {
-            Swal.fire('success', 'Login exitoso!', 'success');
+            Swal.fire('Login exitoso!', '', 'success');
             setState((prev) => ({
               ...prev,
               currentUser: data.user.username,
@@ -136,6 +136,25 @@ export function AppProvider(props) {
           } else {
             Swal.fire('error', `${data.msg}`, 'error');
           }
+        });
+    },
+    handleLogout: () => {
+      console.log('action logout');
+      fetch(`${process.env.REACT_APP_API_ROUTE}/auth/logout`, {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          setState((prev) => ({
+            ...prev,
+            isLoggedIn: false,
+            currentUser: '',
+            currentNote: {title: '', content: ''},
+          }));
+          Swal.fire('Deslogueado!', '', 'success');
         });
     },
     getNotes: (token) => {
