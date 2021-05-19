@@ -1,16 +1,24 @@
 import React, {useContext} from 'react';
 import {Redirect} from 'wouter';
-import {AuthContext} from '../../context/authContext';
+import {AppContext} from '../../context/appContext';
 
 const ProtectedRoute = (props) => {
   const Component = props.component;
-  const {state} = useContext(AuthContext);
+  const {state} = useContext(AppContext);
 
-  return state.isLoggedIn ? (
-    <Component notes={state.notes} />
-  ) : (
-    <Redirect to="/login" />
-  );
+  if (state.isLoggedIn) {
+    // actions.getNotes();
+    // const {notes} = noteState;
+    return <Component />;
+  } else {
+    return <Redirect to="/login" />;
+  }
+
+  // return authState.isLoggedIn ? (
+  //   <Component notes={notes} />
+  // ) : (
+  //   <Redirect to="/login" />
+  // );
 };
 
 export default ProtectedRoute;

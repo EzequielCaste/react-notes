@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import {AuthContext} from '../../context/authContext';
+import {AppContext} from '../../context/appContext';
 import {useForm} from '../../hooks/useForm';
 
 const Login = () => {
-  const {actions} = useContext(AuthContext);
+  const {actions} = useContext(AppContext);
   const [formValues, handleInputChange, reset] = useForm({
     username: '',
     password: '',

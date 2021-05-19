@@ -1,43 +1,35 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import {Modal} from './components/Modal';
 import NoteCard from './components/NoteCard';
+import {AppContext} from './context/appContext';
 
-export const NotesApp = ({notes}) => {
-  console.log(notes);
-  const [modal, setModal] = useState(false);
-  const [action, setAction] = useState('new');
-  const toggleModal = () => {
-    console.log('toggle');
-    setModal((prev) => !prev);
-  };
+export const NotesApp = () => {
+  const {state, actions} = useContext(AppContext);
+  const {modal, action, notes, currentNote} = state;
   const newNote = () => {
-    setAction('new');
-    toggleModal();
+    actions.changeAction('new');
+    actions.changeNote({title: '', content: ''});
+    actions.toggleModal();
   };
-
-  // const notes = [
-  //   {title: 'note 1', id: 1, content: 'note 1'},
-  //   {title: 'note 2', id: 2, content: 'note 2'},
-  //   {title: 'note 3', id: 3, content: 'note 3'},
-  // ];
 
   const notesComponent = notes.map((note) => (
-    <NoteCard
-      toggle={toggleModal}
-      changeAction={setAction}
-      note={note}
-      key={note.id}
-    />
+    <NoteCard note={note} key={note._id} />
   ));
 
   return (
-    <div className="container">
-      <h1>notes app</h1>
+    <div className="NotesApp-container">
+      <header>
+        <h1>NotesApp</h1>
+        <span>
+          <strong>{state.currentUser} </strong>
+          Logout
+        </span>
+      </header>
       <div className="Notes-container">{notesComponent}</div>
       <div onClick={newNote} className="btn-new-note">
         New Note
       </div>
-      {modal && <Modal action={action} toggle={toggleModal} />}
+      {modal && <Modal note={currentNote} action={action} />}
     </div>
   );
 };

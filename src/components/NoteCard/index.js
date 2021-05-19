@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AppContext} from '../../context/appContext';
 
-const NoteCard = ({note, changeAction, toggle}) => {
+const NoteCard = ({note}) => {
+  const {actions} = useContext(AppContext);
+
   const editNote = () => {
-    console.log('edit');
-    changeAction('edit');
-    toggle();
+    actions.changeAction('edit');
+    actions.changeNote(note);
+    actions.toggleModal();
   };
   const deleteNote = () => {
-    console.log('delete');
-    changeAction('new');
+    if (window.confirm('Delete Note?')) {
+      actions.deleteNote(note._id);
+    }
   };
   return (
     <div className="Note-card">

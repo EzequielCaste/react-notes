@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import {AppContext} from '../../context/appContext';
 
-export const Modal = ({note = {title: '', content: ''}, toggle}) => {
-  const [formValues, setFormValues] = useState(note);
+export const Modal = ({note = {title: '', content: ''}}) => {
+  const {state, actions} = useContext(AppContext);
+  const [formValues, setFormValues] = useState(note ? note : state.currentNote);
   const {title, content} = formValues;
 
   const handleInputChange = (e) => {
@@ -11,29 +13,15 @@ export const Modal = ({note = {title: '', content: ''}, toggle}) => {
     });
   };
 
-  const handleClick = () => {
-    console.log('click');
-    toggle();
-  };
-
-  const reset = () => {
-    setFormValues({
-      title: '',
-      content: '',
-    });
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (note.title === '') {
-      // new note
       if (title && content) {
-        console.log('create');
+        actions.createNote({title, content});
       }
     } else {
-      // edit note
-      console.log('edit');
+      actions.editNote(note._id, {title, content});
     }
-    reset();
   };
   return (
     <div className="Modal">
@@ -72,7 +60,7 @@ export const Modal = ({note = {title: '', content: ''}, toggle}) => {
         >
           Save
         </button>
-        <span onClick={handleClick} className="Modal-close-btn">
+        <span onClick={actions.toggleModal} className="Modal-close-btn">
           Close
         </span>
       </form>

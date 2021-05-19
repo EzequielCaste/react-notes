@@ -1,14 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Route, Router, Switch} from 'wouter';
-import {AuthContext} from '../context/authContext';
+
 import {NotesApp} from '../NotesApp';
 import Login from '../components/Login';
 import ProtectedRoute from '../components/ProtectedRoute';
 
 const AppRouter = () => {
-  const {state} = useContext(AuthContext);
-  const {isLoggedIn} = state;
-
   return (
     <Router>
       <Switch>

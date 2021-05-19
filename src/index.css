@@ -18,13 +18,22 @@ h3 {
   padding: 0;
 }
 
-.container {
+.NotesApp-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   height: 100vh;
+}
+.NotesApp-container h1 {
+  margin-top: 16px;
+}
+.NotesApp-container header {
+  display: flex;
+  align-items: baseline;
+  width: 95%;
+  justify-content: space-between;
 }
 .btn-new-note {
   text-align: center;
