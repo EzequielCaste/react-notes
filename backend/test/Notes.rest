@@ -1,0 +1,39 @@
+// LIST NOTES
+GET http://localhost:3000/api/notes HTTP/1.1
+content-type: application/json
+
+{
+  "username": "sample"
+}
+
+###
+// CREATE NOTE
+POST http://localhost:3000/api/notes/new HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Test 1",
+  "content": "2 bla"  
+}
+
+###
+
+// EDIT NOTE
+PUT http://localhost:3000/api/notes/6093397bdd77e11338b069cc HTTP/1.1
+content-type: application/json
+
+{
+  "title": "updated title",
+  "content": "updated content"
+}
+
+###
+
+// DELETE NOTE
+DELETE http://localhost:3000/api/notes/6093397bdd77e11338b069cc HTTP/1.1
+content-type: application/json
+
+{
+  "title": "updated title",
+  "content": "updated content"
+}
