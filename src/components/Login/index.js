@@ -3,7 +3,7 @@ import {AppContext} from '../../context/appContext';
 import {useForm} from '../../hooks/useForm';
 
 const Login = () => {
-  const {actions} = useContext(AppContext);
+  const {state, actions} = useContext(AppContext);
   const [formValues, handleInputChange, reset] = useForm({
     username: '',
     password: '',
@@ -39,7 +39,9 @@ const Login = () => {
               onChange={handleInputChange}
             />
           </div>
-          <button>Sign in</button>
+          <button disabled={state.isLoading}>
+            {state.isLoading ? 'Loading...' : 'Sign In'}
+          </button>
         </form>
       </div>
     </div>

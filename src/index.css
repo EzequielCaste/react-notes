@@ -44,7 +44,7 @@ h3 {
   outline: none;
   border: 1px solid;
   max-width: 80px;
-  background-color: rgba(170, 170, 150, 0.7);
+  background-color: rgba(170, 170, 150, 0.2);
 }
 .Login-form button {
   margin-top: 16px;
@@ -54,6 +54,14 @@ h3 {
   border: none;
   border-radius: 6px;
   background-color: rgba(170, 170, 150, 0.7);
+  cursor: pointer;
+}
+.Login-form button:hover {
+  background-color: rgba(170, 170, 150, 0.5);
+}
+.Login-form button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(170, 170, 150);
 }
 .NotesApp-container {
   display: flex;

@@ -7,6 +7,7 @@ export const AppContext = createContext(null);
 export function AppProvider(props) {
   const [state, setState] = useState({
     currentUser: '',
+    isLoading: false,
     isLoggedIn: false,
     notes: [],
     token: '',
