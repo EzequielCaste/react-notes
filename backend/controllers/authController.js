@@ -12,7 +12,7 @@ exports.registerUser = async (req, res) => {
   }
 
   try {
-    let user = await User.findOne({username});
+    let user = await User.findOne({username}).populate('notes').exec();
 
     if (user) {
       return res.status(400).json({msg: 'User already exists'});
@@ -22,25 +22,35 @@ exports.registerUser = async (req, res) => {
 
     const payload = {
       user: {
-        id: user.id,
+        _id: user.id,
       },
     };
-    jwt.sign(
-      payload,
-      process.env.REACT_APP_SECRET,
-      {
-        expiresIn: 3600,
-      },
-      (error, token) => {
-        if (error) throw error;
-        res.json({ok: true, token});
-      }
-    );
-
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
-
     await user.save();
+
+    const token = jwt.sign(payload, process.env.REACT_APP_SECRET, {
+      expiresIn: 3600,
+    });
+
+    res.json({ok: true, token, user});
+    /*
+const token = jwt.sign({_id: user.id}, process.env.REACT_APP_SECRET, {
+      expiresIn: 300,
+    });
+    */
+
+    // jwt.sign(
+    //   payload,
+    //   process.env.REACT_APP_SECRET,
+    //   {
+    //     expiresIn: 3600,
+    //   },
+    //   (error, token) => {
+    //     if (error) throw error;
+    //     res.json({ok: true, token, user});
+    //   }
+    // );
   } catch (error) {
     console.log(error);
     res.status(400).send('Error while creating new user.');

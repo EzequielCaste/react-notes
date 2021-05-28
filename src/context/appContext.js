@@ -42,6 +42,7 @@ export function AppProvider(props) {
       }));
     },
     createNote: ({title, content}) => {
+      console.log('action create');
       fetch(`${process.env.REACT_APP_API_ROUTE}/notes/new`, {
         method: 'POST',
         headers: {
@@ -59,7 +60,7 @@ export function AppProvider(props) {
               modal: !prev.modal,
               currentNote: {title: '', content: ''},
             }));
-            //Swal.fire('success', 'Nota creada!', 'success');
+            Swal.fire('success', 'Nota creada!', 'success');
             setLocation('/');
           } else {
             Swal.fire('error', `${data.msg}`, 'error');
@@ -112,6 +113,33 @@ export function AppProvider(props) {
           }
         });
       actions.getNotes(state.token);
+    },
+    handleRegister: (username, password) => {
+      console.log('action register');
+      fetch(`${process.env.REACT_APP_API_ROUTE}/auth/register`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({username, password}),
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data);
+          if (data.ok) {
+            Swal.fire('Registración exitosa!', '', 'success');
+            setState((prev) => ({
+              ...prev,
+              isLoggedIn: true,
+              token: data.token,
+              currentUser: data.user.username,
+              notes: data.user.notes,
+            }));
+            setLocation('/');
+          } else {
+            Swal.fire('Error', data.msg, 'error');
+          }
+        });
     },
     handleLogin: (username, password) => {
       console.log('action login');

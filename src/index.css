@@ -16,14 +16,14 @@ h3 {
   margin: 0;
   padding: 0;
 }
-.Login-container {
+.Form-container {
   display: grid;
   place-items: center;
   height: 100vh;
   width: 100vw;
   background-color: rgba(170, 170, 150, 0.7);
 }
-.Login-form {
+.Form-inner {
   border-radius: 8px;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.23);
   -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.23);
@@ -31,13 +31,13 @@ h3 {
   padding: 32px 24px;
   background-color: #fff;
 }
-.Login-form div {
+.Form-inner div {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 8px 0;
 }
-.Login-form input {
+.Form-inner input {
   padding: 4px;
   margin-left: 16px;
   display: inline-block;
@@ -46,7 +46,7 @@ h3 {
   max-width: 80px;
   background-color: rgba(170, 170, 150, 0.2);
 }
-.Login-form button {
+.Form-inner button {
   margin-top: 16px;
   width: 100%;
   padding: 6px;
@@ -56,10 +56,10 @@ h3 {
   background-color: rgba(170, 170, 150, 0.7);
   cursor: pointer;
 }
-.Login-form button:hover {
+.Form-inner button:hover {
   background-color: rgba(170, 170, 150, 0.5);
 }
-.Login-form button:disabled {
+.Form-inner button:disabled {
   cursor: not-allowed;
   background-color: rgb(170, 170, 150);
 }

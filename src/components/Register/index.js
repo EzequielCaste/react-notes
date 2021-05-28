@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
-import {Link} from 'wouter';
 import {AppContext} from '../../context/appContext';
 import {useForm} from '../../hooks/useForm';
 
-const Login = () => {
+const Register = () => {
   const {state, actions} = useContext(AppContext);
   const [formValues, handleInputChange, reset] = useForm({
     username: '',
@@ -12,13 +11,13 @@ const Login = () => {
   const {username, password} = formValues;
   const handleSubmit = (e) => {
     e.preventDefault();
-    actions.handleLogin(username, password);
+    actions.handleRegister(username, password);
     reset();
   };
   return (
     <div className="Form-container">
       <div className="Form-inner">
-        <h1>Login</h1>
+        <h1>Register</h1>
         <form action="#" onSubmit={handleSubmit} className="">
           <div>
             <label>Username: </label>
@@ -43,13 +42,12 @@ const Login = () => {
             />
           </div>
           <button disabled={state.isLoading}>
-            {state.isLoading ? 'Loading...' : 'Sign In'}
+            {state.isLoading ? 'Loading...' : 'Register'}
           </button>
-          <Link to="/register">Register</Link>
         </form>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
