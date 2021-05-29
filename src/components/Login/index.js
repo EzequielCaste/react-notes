@@ -45,6 +45,7 @@ const Login = () => {
           <button disabled={state.isLoading}>
             {state.isLoading ? 'Loading...' : 'Sign In'}
           </button>
+
           <Link to="/register">Register</Link>
         </form>
       </div>

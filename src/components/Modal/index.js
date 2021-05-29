@@ -25,12 +25,8 @@ export const Modal = ({note = {title: '', content: ''}}) => {
   };
   return (
     <div className="Modal">
-      <form
-        onSubmit={handleSubmit}
-        action=""
-        className="flex flex-col justify-between h-full"
-      >
-        <div className="flex flex-col">
+      <form onSubmit={handleSubmit} action="" className="Modal-form">
+        <div className="Modal-form-control">
           <label htmlFor="title">Note title: </label>
           <input
             required
@@ -41,7 +37,7 @@ export const Modal = ({note = {title: '', content: ''}}) => {
             onChange={handleInputChange}
           />
         </div>
-        <div className="flex flex-col">
+        <div className="Modal-form-control">
           <label htmlFor="content">Note text: </label>
           <textarea
             required
@@ -54,10 +50,7 @@ export const Modal = ({note = {title: '', content: ''}}) => {
             value={content}
           ></textarea>
         </div>
-        <button
-          type="submit"
-          className="mx-auto bg-green-300 py-2 px-4 rounded"
-        >
+        <button type="submit" className="btn">
           Save
         </button>
         <span onClick={actions.toggleModal} className="Modal-close-btn">

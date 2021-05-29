@@ -23,7 +23,9 @@ export const NotesApp = () => {
         <h1>NotesApp</h1>
         <span>
           <strong>{state.currentUser} </strong>
-          <button onClick={actions.handleLogout}>Logout</button>
+          <button className="btn" onClick={actions.handleLogout}>
+            Logout
+          </button>
         </span>
       </header>
       <div className="Notes-container">{notesComponent}</div>

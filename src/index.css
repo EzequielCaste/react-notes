@@ -9,7 +9,19 @@ body {
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #e3e1d3;
+  font-size: 16px;
 }
+/* 
+
+
+#e3e1d3;
+#c8c4aa;
+#b4af8b;
+
+
+
+*/
 h1,
 h2,
 h3 {
@@ -21,7 +33,6 @@ h3 {
   place-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(170, 170, 150, 0.7);
 }
 .Form-inner {
   border-radius: 8px;
@@ -37,6 +48,14 @@ h3 {
   justify-content: space-between;
   margin: 8px 0;
 }
+.Form-inner a,
+.Form-inner a:visited,
+.Form-innera a:active {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  font-size: 0.8rem;
+}
 .Form-inner input {
   padding: 4px;
   margin-left: 16px;
@@ -47,13 +66,13 @@ h3 {
   background-color: rgba(170, 170, 150, 0.2);
 }
 .Form-inner button {
-  margin-top: 16px;
+  margin: 16px 0;
   width: 100%;
   padding: 6px;
   font-size: 16px;
   border: none;
   border-radius: 6px;
-  background-color: rgba(170, 170, 150, 0.7);
+  background-color: #c8c4aa;
   cursor: pointer;
 }
 .Form-inner button:hover {
@@ -80,31 +99,35 @@ h3 {
   width: 95%;
   justify-content: space-between;
 }
+.NotesApp-container button {
+}
 .btn-new-note {
   text-align: center;
   font-weight: 500;
   padding: 16px 0;
   width: 100%;
-  background-color: rgba(170, 170, 150, 0.5);
+  background-color: #c8c4aa;
 }
 .btn-new-note:hover {
   cursor: pointer;
-  background-color: rgba(170, 170, 150, 0.7);
+  background-color: #b4af8b;
 }
 .Notes-container {
   display: flex;
   gap: 8px;
 }
 .Note-card {
+  background-color: #fff;
   border-radius: 4px;
   min-width: 150px;
-  border: thin solid rgba(170, 170, 150, 0.7);
+  border: 2px solid rgba(170, 170, 150, 0.5);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
 }
 .Note-card-title {
   font-size: 20px;
   font-weight: 700;
   padding: 8px 16px;
-  background-color: rgba(170, 170, 150, 0.7);
+  background-color: rgba(170, 170, 150, 0.5);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -126,12 +149,44 @@ h3 {
 .Modal {
   padding: 16px;
   border-radius: 8px;
-  background-color: cadetblue;
+  background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.Modal-close-btn {
+.Modal-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.Modal-form-control {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+.Modal-form-control textarea,
+.Modal-form-control input {
+  margin-left: 8px;
+  border: thin solid black;
+  border-radius: 4px;
+}
+
+.btn {
+  margin: 8px auto;
+  background-color: #c8c4aa;
+  padding: 8px 16px;
   cursor: pointer;
+  border-radius: 4px;
+}
+.btn:hover {
+  filter: brightness(98%);
+}
+
+.Modal-close-btn {
+  width: fit-content;
+  cursor: pointer;
+  margin: 0 auto;
+  font-size: 12px;
 }
