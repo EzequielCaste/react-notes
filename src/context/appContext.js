@@ -142,9 +142,13 @@ export function AppProvider(props) {
           }
         });
     },
-    handleLogin: (username, password) => {
+    handleLogin: async (username, password) => {
       console.log('action login');
-      fetch(`${process.env.REACT_APP_API_ROUTE}/auth/login`, {
+      setState((prev) => ({
+        ...prev,
+        isLoading: true,
+      }));
+      await fetch(`${process.env.REACT_APP_API_ROUTE}/auth/login`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -160,11 +164,16 @@ export function AppProvider(props) {
               currentUser: data.user.username,
               isLoggedIn: true,
               token: data.token,
+              isLoading: false,
             }));
             actions.getNotes(data.token);
             setLocation('/');
           } else {
             Swal.fire('error', `${data.msg}`, 'error');
+            setState((prev) => ({
+              ...prev,
+              isLoading: false,
+            }));
           }
         });
     },
