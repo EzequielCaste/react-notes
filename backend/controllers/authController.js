@@ -10,9 +10,9 @@ exports.registerUser = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({errors: errors.array()});
   }
-
+  let user;
   try {
-    let user = await User.findOne({username}).populate('notes').exec();
+    user = await User.findOne({username}).populate('notes').exec();
 
     if (user) {
       return res.status(400).json({msg: 'User already exists'});
@@ -27,6 +27,8 @@ exports.registerUser = async (req, res) => {
     };
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
+    user.username = username;
+    user.notes = [];
     await user.save();
 
     const token = jwt.sign(payload, process.env.REACT_APP_SECRET, {
