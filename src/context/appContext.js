@@ -5,8 +5,10 @@ import {useLocation} from 'wouter';
 export const AppContext = createContext(null);
 
 export function AppProvider(props) {
+  const [location, setLocation] = useLocation();
   const [state, setState] = useState({
     currentUser: '',
+    currentPath: location,
     isLoading: false,
     isLoggedIn: false,
     notes: [],
@@ -18,8 +20,6 @@ export function AppProvider(props) {
       content: '',
     },
   });
-
-  const [setLocation] = useLocation();
 
   const actions = {
     changeAction: (action) => {
