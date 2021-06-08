@@ -86,13 +86,14 @@ export function AppProvider(props) {
               currentNote: {title: '', content: ''},
             }));
             console.log('edit ok');
+            actions.getNotes(state.token);
             //Swal.fire('success', 'Nota editada!', 'success');
             setLocation('/');
           } else {
             Swal.fire('error', `${data.msg}`, 'error');
           }
         });
-      actions.getNotes(state.token);
+      //actions.getNotes(state.token);
     },
     deleteNote: (id) => {
       console.log('action delete', id);
