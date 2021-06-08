@@ -60,7 +60,7 @@ export function AppProvider(props) {
               modal: !prev.modal,
               currentNote: {title: '', content: ''},
             }));
-            Swal.fire('success', 'Nota creada!', 'success');
+            Swal.fire('success', 'Note created!', 'success');
             setLocation('/');
           } else {
             Swal.fire('error', `${data.msg}`, 'error');
@@ -107,7 +107,7 @@ export function AppProvider(props) {
         .then((resp) => resp.json())
         .then((data) => {
           if (data.ok) {
-            Swal.fire('success', 'Nota eliminada!', 'success');
+            Swal.fire('success', 'Note deleted!', 'success');
             //setLocation('/');
           } else {
             Swal.fire('Error', `${data.msg.message}`, 'error');
@@ -115,9 +115,13 @@ export function AppProvider(props) {
         });
       actions.getNotes(state.token);
     },
-    handleRegister: (username, password) => {
+    handleRegister: async (username, password) => {
       console.log('action register');
-      fetch(`${process.env.REACT_APP_API_ROUTE}/auth/register`, {
+      setState((prev) => ({
+        ...prev,
+        isLoading: true,
+      }));
+      await fetch(`${process.env.REACT_APP_API_ROUTE}/auth/register`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -128,9 +132,10 @@ export function AppProvider(props) {
         .then((data) => {
           console.log(data);
           if (data.ok) {
-            Swal.fire('Registración exitosa!', '', 'success');
+            Swal.fire('Registration successful!', '', 'success');
             setState((prev) => ({
               ...prev,
+              isLoading: false,
               isLoggedIn: true,
               token: data.token,
               currentUser: data.user.username,
@@ -139,6 +144,10 @@ export function AppProvider(props) {
             setLocation('/');
           } else {
             Swal.fire('Error', data.msg, 'error');
+            setState((prev) => ({
+              ...prev,
+              isLoading: false,
+            }));
           }
         });
     },
@@ -158,7 +167,7 @@ export function AppProvider(props) {
         .then((resp) => resp.json())
         .then((data) => {
           if (data.ok) {
-            Swal.fire('Login exitoso!', '', 'success');
+            Swal.fire('Login Successful!', '', 'success');
             setState((prev) => ({
               ...prev,
               currentUser: data.user.username,
@@ -193,7 +202,7 @@ export function AppProvider(props) {
             currentUser: '',
             currentNote: {title: '', content: ''},
           }));
-          Swal.fire('Deslogueado!', '', 'success');
+          Swal.fire('Logged out!', '', 'success');
         });
     },
     getNotes: (token) => {

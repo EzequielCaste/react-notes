@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {Link} from 'wouter';
 import {AppContext} from '../../context/appContext';
 import {useForm} from '../../hooks/useForm';
 
@@ -44,6 +45,7 @@ const Register = () => {
           <button disabled={state.isLoading}>
             {state.isLoading ? 'Loading...' : 'Register'}
           </button>
+          <Link to="/login">Sign In</Link>
         </form>
       </div>
     </div>
