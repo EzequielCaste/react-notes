@@ -36,23 +36,6 @@ exports.registerUser = async (req, res) => {
     });
 
     res.json({ok: true, token, user});
-    /*
-const token = jwt.sign({_id: user.id}, process.env.REACT_APP_SECRET, {
-      expiresIn: 300,
-    });
-    */
-
-    // jwt.sign(
-    //   payload,
-    //   process.env.REACT_APP_SECRET,
-    //   {
-    //     expiresIn: 3600,
-    //   },
-    //   (error, token) => {
-    //     if (error) throw error;
-    //     res.json({ok: true, token, user});
-    //   }
-    // );
   } catch (error) {
     console.log(error);
     res.status(400).send('Error while creating new user.');
