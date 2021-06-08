@@ -42,7 +42,10 @@ export function AppProvider(props) {
       }));
     },
     createNote: ({title, content}) => {
-      console.log('action create');
+      setState((prev) => ({
+        ...prev,
+        isLoading: true,
+      }));
       fetch(`${process.env.REACT_APP_API_ROUTE}/notes/new`, {
         method: 'POST',
         headers: {
@@ -56,6 +59,7 @@ export function AppProvider(props) {
           if (data.ok) {
             setState((prev) => ({
               ...prev,
+              isLoading: false,
               notes: data.user.notes,
               modal: !prev.modal,
               currentNote: {title: '', content: ''},
@@ -63,12 +67,12 @@ export function AppProvider(props) {
             Swal.fire('success', 'Note created!', 'success');
             setLocation('/');
           } else {
+            console.log('error', data);
             Swal.fire('error', `${data.msg}`, 'error');
           }
         });
     },
     editNote: (id, {title, content}) => {
-      console.log('action edit :', id, title, content);
       fetch(`${process.env.REACT_APP_API_ROUTE}/notes/${id}`, {
         method: 'PUT',
         headers: {
@@ -85,18 +89,14 @@ export function AppProvider(props) {
               modal: !prev.modal,
               currentNote: {title: '', content: ''},
             }));
-            console.log('edit ok');
             actions.getNotes(state.token);
-            //Swal.fire('success', 'Nota editada!', 'success');
             setLocation('/');
           } else {
             Swal.fire('error', `${data.msg}`, 'error');
           }
         });
-      //actions.getNotes(state.token);
     },
     deleteNote: (id) => {
-      console.log('action delete', id);
       fetch(`${process.env.REACT_APP_API_ROUTE}/notes/${id}`, {
         method: 'DELETE',
         headers: {
@@ -108,7 +108,6 @@ export function AppProvider(props) {
         .then((data) => {
           if (data.ok) {
             Swal.fire('success', 'Note deleted!', 'success');
-            //setLocation('/');
           } else {
             Swal.fire('Error', `${data.msg.message}`, 'error');
           }
@@ -116,7 +115,6 @@ export function AppProvider(props) {
       actions.getNotes(state.token);
     },
     handleRegister: async (username, password) => {
-      console.log('action register');
       setState((prev) => ({
         ...prev,
         isLoading: true,
@@ -130,7 +128,6 @@ export function AppProvider(props) {
       })
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data);
           if (data.ok) {
             Swal.fire('Registration successful!', '', 'success');
             setState((prev) => ({
@@ -152,7 +149,6 @@ export function AppProvider(props) {
         });
     },
     handleLogin: async (username, password) => {
-      console.log('action login');
       setState((prev) => ({
         ...prev,
         isLoading: true,
@@ -187,7 +183,6 @@ export function AppProvider(props) {
         });
     },
     handleLogout: () => {
-      console.log('action logout');
       fetch(`${process.env.REACT_APP_API_ROUTE}/auth/logout`, {
         method: 'GET',
         headers: {
@@ -206,7 +201,6 @@ export function AppProvider(props) {
         });
     },
     getNotes: (token) => {
-      console.log(`get the notes`);
       fetch(`${process.env.REACT_APP_API_ROUTE}/notes`, {
         method: 'GET',
         headers: {

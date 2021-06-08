@@ -50,7 +50,7 @@ export const Modal = ({note = {title: '', content: ''}}) => {
             value={content}
           ></textarea>
         </div>
-        <button type="submit" className="btn">
+        <button disabled={state.isLoading} type="submit" className="btn">
           Save
         </button>
         <span onClick={actions.toggleModal} className="Modal-close-btn">
