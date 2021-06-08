@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import {Link} from 'wouter';
 import {Modal} from './components/Modal';
 import NoteCard from './components/NoteCard';
 import {AppContext} from './context/appContext';

@@ -19,7 +19,7 @@ export function AppProvider(props) {
     },
   });
 
-  const [location, setLocation] = useLocation();
+  const [setLocation] = useLocation();
 
   const actions = {
     changeAction: (action) => {
