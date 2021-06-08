@@ -110,7 +110,7 @@ export function AppProvider(props) {
             Swal.fire('success', 'Nota eliminada!', 'success');
             //setLocation('/');
           } else {
-            Swal.fire('error', `${data.msg}`, 'error');
+            Swal.fire('Error', `${data.msg.message}`, 'error');
           }
         });
       actions.getNotes(state.token);
