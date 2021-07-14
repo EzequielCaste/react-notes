@@ -193,6 +193,7 @@ export function AppProvider(props) {
         .then((data) => {
           setState((prev) => ({
             ...prev,
+            isLoading: false,
             isLoggedIn: false,
             currentUser: '',
             currentNote: {title: '', content: ''},
