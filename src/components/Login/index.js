@@ -6,8 +6,8 @@ import {useForm} from '../../hooks/useForm';
 const Login = () => {
   const {state, actions} = useContext(AppContext);
   const [formValues, handleInputChange, reset] = useForm({
-    username: '',
-    password: '',
+    username: 'test',
+    password: 'test',
   });
   const {username, password} = formValues;
   const handleSubmit = (e) => {

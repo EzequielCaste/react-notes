@@ -7,10 +7,10 @@ export const AppContext = createContext(null);
 export function AppProvider(props) {
   const [location, setLocation] = useLocation();
   const [state, setState] = useState({
-    currentUser: '',
+    currentUser: 'test',
     currentPath: location,
     isLoading: false,
-    isLoggedIn: false,
+    isLoggedIn: true,
     notes: [],
     token: '',
     modal: false,
