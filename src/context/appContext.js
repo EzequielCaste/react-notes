@@ -10,7 +10,7 @@ export function AppProvider(props) {
     currentUser: 'test',
     currentPath: location,
     isLoading: false,
-    isLoggedIn: true,
+    isLoggedIn: false,
     notes: [],
     token: '',
     modal: false,
